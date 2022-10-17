@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap");
+:root {
+  --dark-violet: #544a7d;
+  --yellow: #ffd452;
+  --flag-violet: #6757a8;
+  --bright-violet: #7c66d6;
+  --game-cells: 0;
+  --columns: 0;
+  --rows: 0;
+}
+
+html,
+body {
+  background: linear-gradient(
+    to right,
+    var(--dark-violet),
+    var(--yellow),
+    var(--dark-violet)
+  );
+  background-size: 200%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}

@@ -1,0 +1,12 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background-color: black;
+  width: 50%;
+  height: 50%;
+}

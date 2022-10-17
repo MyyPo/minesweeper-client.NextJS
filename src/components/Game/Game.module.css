@@ -1,0 +1,36 @@
+.container {
+  z-index: 2;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cells {
+  max-height: calc(90vh -1px);
+  max-width: calc(90vw -1px);
+  position: relative;
+  border: 0.7rem brown groove;
+
+  display: grid;
+  grid-template-columns: repeat(var(--game-cells), 0fr);
+  grid-template-rows: repeat(var(--game-cells), 0fr);
+}
+
+.cell {
+  min-width: 42px;
+  min-height: 42px;
+  border: black;
+  background: rgb(190, 190, 190);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: rgb(15, 15, 15);
+  border-style: ridge;
+  font-size: 28px;
+}
+
+.cell:hover {
+  background: rgb(30, 30, 30);
+}
