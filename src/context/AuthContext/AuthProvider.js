@@ -3,10 +3,14 @@ import getAuthCookie from "./getAuthCookie";
 import AuthContext from "./AuthContext";
 
 export const AuthProvider = ({ children }) => {
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState("loading");
   useEffect(() => {
     const currentUser = getAuthCookie();
-    setStatus(currentUser);
+    if (currentUser) {
+      setStatus("authenticated");
+    } else {
+      setStatus("unauthenticated");
+    }
   }, []);
 
   return (

@@ -116,7 +116,7 @@
   height: 100%;
 }
 
-.form_container {
+.container_centered {
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -217,7 +217,8 @@
 
 .commit_correct_button,
 .commit_incorrect_button,
-.commit_default_button {
+.commit_default_button,
+.commit_default_login_button {
   margin-top: 4%;
   cursor: pointer;
   width: 65%;
@@ -226,10 +227,21 @@
   background: rgb(128, 128, 128);
   border: 3px solid;
 }
+.commit_default_login_button {
+  border: 5px gray ridge;
+  transition: width 0.3s, height 0.3s, background-color 0.5s ease-in-out;
+}
 
 .commit_correct_button {
   border-color: rgb(50, 230, 37);
   animation: jump 0.5s linear;
+  transition: width 0.3s, height 0.3s, background-color 0.5s ease-in-out;
+}
+.commit_correct_button:hover,
+.commit_default_login_button:hover {
+  width: 70%;
+  height: 4.2rem;
+  background: rgb(60, 60, 60);
 }
 @keyframes jump {
   0% {

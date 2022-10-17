@@ -27,7 +27,7 @@ function Layout() {
   return (
     <>
       {/* show profile and logout button only if the user is authenticated */}
-      {status && (
+      {status === "authenticated" && (
         <div className={styles.layout_container}>
           <button className={styles.layout_button}>
             {/* might implement profile later, I cope */}

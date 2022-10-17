@@ -17,7 +17,8 @@
   grid-template-rows: repeat(var(--game-cells), 0fr);
 }
 
-.cell {
+.cell,
+.cell_dark {
   min-width: 42px;
   min-height: 42px;
   border: black;
@@ -30,7 +31,28 @@
   border-style: ridge;
   font-size: 28px;
 }
+.cell_dark {
+  background: rgb(140, 140, 140);
+}
 
 .cell:hover {
   background: rgb(30, 30, 30);
+}
+
+.I0 {
+  fill: red;
+}
+.I1 {
+  fill: rgb(37, 41, 243);
+}
+.I2 {
+  fill: rgb(48, 170, 3);
+}
+.I3,
+.I4,
+.I5,
+.I6,
+.I7,
+.I8 {
+  fill: rgb(208, 0, 0);
 }

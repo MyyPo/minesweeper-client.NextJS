@@ -9,9 +9,8 @@ import useWindowSize from "../../hooks/useWindowSize";
 import useAuthContext from "../../hooks/useAuthContext";
 
 function Hero() {
-  // check a non-http-only cookie that comes together with an http-only one to figure out if the user is logged in
+  // comment in the hook
   const { status } = useAuthContext();
-  console.log(status);
   // hook that gets window width and height and listens to its change
   const size = useWindowSize();
 
@@ -38,8 +37,8 @@ function Hero() {
         ))}
       </div>
       {/* Handles authentication login/registration */}
-      {status === undefined && <Auth />}
-      {status && <Game />}
+      {status === "unauthenticated" && <Auth />}
+      {status === "authenticated" && <Game />}
     </>
   );
 }

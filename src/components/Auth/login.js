@@ -28,7 +28,6 @@ function Login({ closeWindowHandler }) {
     });
     if (response.ok) {
       Router.reload();
-      // response = await response.json();
     } else {
       setError(true);
     }
@@ -39,7 +38,7 @@ function Login({ closeWindowHandler }) {
       <button className={styles.close_button} onClick={closeWindowHandler}>
         <XIcon className={styles.x_icon} />
       </button>
-      <form onSubmit={handleSubmit} className={styles.form_container}>
+      <form onSubmit={handleSubmit} className={styles.container_centered}>
         <p className={styles.form_text}>Login form</p>
         <div className={styles.input_container}>
           <input
@@ -78,7 +77,7 @@ function Login({ closeWindowHandler }) {
           type="submit"
           className={
             !error
-              ? styles.commit_default_button
+              ? styles.commit_default_login_button
               : styles.commit_incorrect_button
           }
         >

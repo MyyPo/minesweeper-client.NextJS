@@ -22,8 +22,8 @@ function Game({}) {
       {!isLoading && (
         <div className={styles.cells}>
           {/* unpack a two-layer deep array in order to get all of its contents, where [y][x] */}
-          {data.uncoveredField.map((column) =>
-            column.map((cell, i) => <Cell cell={cell} key={i} />)
+          {data.uncoveredField.map((row, iY) =>
+            row.map((cell, iX) => <Cell cell={cell} key={iX} iY={iY} iX={iX} />)
           )}
         </div>
       )}
