@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 function getAuthCookie() {
   return document.cookie
     .split("; ")

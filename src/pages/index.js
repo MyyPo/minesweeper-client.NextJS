@@ -10,15 +10,6 @@ import Hero from "../components/Hero/index";
 export default function Home() {
   const [game, setGame] = useState(false);
 
-  let field;
-  field = [...Array(256).keys()];
-
-  useEffect(() => {
-    const cellsNumber = Math.sqrt(field.length);
-
-    document.documentElement.style.setProperty("--cells", `${cellsNumber}`);
-  }, [field]);
-
   const handleClick = () => {
     setField(!game);
   };

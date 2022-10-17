@@ -1,4 +1,4 @@
-import AuthContext from "../../context/AuthContext/AuthContext";
+import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 
 // check a non-http-only cookie that comes together with an http-only one to figure out if the user is logged in

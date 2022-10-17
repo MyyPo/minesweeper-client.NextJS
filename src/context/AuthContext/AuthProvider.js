@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import getAuthCookie from "./getAuthCookie";
-import AuthContext from "./AuthContext";
+import AuthContext from "./index";
 
 export const AuthProvider = ({ children }) => {
   const [status, setStatus] = useState("loading");

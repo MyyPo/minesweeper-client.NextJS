@@ -6,6 +6,40 @@
   transform: translate(-50%, -50%);
 }
 
+.options {
+  backdrop-filter: sepia(90%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25rem;
+  height: 25rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 20px;
+  border: 1em gray ridge;
+  pointer-events: auto;
+}
+.button_ranked {
+  height: 10rem;
+  width: calc(25rem - 10px);
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    rgba(87, 84, 84, 0.8),
+    rgba(0, 0, 0, 0.8)
+  );
+  font-family: "Kanit", sans-serif;
+  border: 12px double gray;
+  box-shadow: inset;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  pointer-events: auto;
+  text-justify: unset;
+}
+
 .cells {
   max-height: calc(90vh -1px);
   max-width: calc(90vw -1px);
@@ -17,12 +51,12 @@
   grid-template-rows: repeat(var(--game-cells), 0fr);
 }
 
-.cell,
-.cell_dark {
+.cell_even,
+.cell_odd {
   min-width: 42px;
   min-height: 42px;
   border: black;
-  background: rgb(190, 190, 190);
+  background: rgb(120, 120, 120);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -31,8 +65,17 @@
   border-style: ridge;
   font-size: 28px;
 }
-.cell_dark {
-  background: rgb(140, 140, 140);
+.cell_even:nth-child(even) {
+  background: rgb(180, 180, 180);
+}
+.cell_even:hover {
+  background: rgb(80, 80, 80);
+}
+.cell_odd:nth-child(odd) {
+  background: rgb(180, 180, 180);
+}
+.cell_odd:hover {
+  background: rgb(80, 80, 80);
 }
 
 .cell:hover {

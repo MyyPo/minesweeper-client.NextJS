@@ -1,31 +1,39 @@
 import styles from "./Game.module.css";
 import { useState, useEffect, useMemo } from "react";
-import { useGamePlay } from "../../hooks/useGamePlay";
-import { useGameGet } from "../../hooks/useGameGet";
 import anime from "animejs";
 
-import Cell from "./cell";
+import { useGameGet } from "../../hooks/useGameGet";
+import { handleLogout } from "../../utils/handleLogout";
+import GameBoard from "./gameBoard";
+import GameOptions from "./gameOptions";
 
-function Game({}) {
-  const [gameCells, setGameCells] = useState(16);
-  let x, y;
-  const { data, isLoading, isFetching } = useGamePlay(x, y);
+function Game() {
+  const { data, isLoading, isFetching } = useGameGet();
+  const [gameCells, setGameCells] = useState(null);
+  const [boardReady, setBoardReady] = useState(false);
+
+  // figure out how big gameboard should be
+  useEffect(() => {
+    if (!isLoading) {
+      console.log(data);
+      setGameCells(data.width);
+    }
+  }, [data, isLoading]);
 
   useEffect(() => {
-    if (!isNaN(gameCells)) {
+    if (gameCells) {
       document.documentElement.style.setProperty("--game-cells", gameCells);
+      // prevent the gameboard from flashing too much without the grid properties
+      setBoardReady(true);
     }
   }, [gameCells]);
 
   return (
     <div className={styles.container}>
-      {!isLoading && (
-        <div className={styles.cells}>
-          {/* unpack a two-layer deep array in order to get all of its contents, where [y][x] */}
-          {data.uncoveredField.map((row, iY) =>
-            row.map((cell, iX) => <Cell cell={cell} key={iX} iY={iY} iX={iX} />)
-          )}
-        </div>
+      {!isLoading && boardReady ? (
+        <GameBoard data={data} />
+      ) : (
+        !isLoading && data === "nogame" && <GameOptions />
       )}
     </div>
   );
