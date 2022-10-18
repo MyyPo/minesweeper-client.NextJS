@@ -1,9 +1,9 @@
 import styles from "./Game.module.css";
 import { useState, useEffect, useMemo } from "react";
+import { useMutation } from "@tanstack/react-query";
 import anime from "animejs";
 
 import { useGameGet } from "../../hooks/useGameGet";
-import { handleLogout } from "../../utils/handleLogout";
 import GameBoard from "./gameBoard";
 import GameOptions from "./gameOptions";
 
@@ -14,8 +14,7 @@ function Game() {
 
   // figure out how big gameboard should be
   useEffect(() => {
-    if (!isLoading) {
-      console.log(data);
+    if (!isLoading && data) {
       setGameCells(data.width);
     }
   }, [data, isLoading]);

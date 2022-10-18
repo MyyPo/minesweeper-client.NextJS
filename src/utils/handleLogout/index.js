@@ -8,10 +8,12 @@ export default async function handleLogout() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   });
+
   if (response.ok) {
     Router.reload();
   } else {
-    await response.json();
-    console.log(response.msg);
+    // if the server for some reason fails to remove the cookie try to remove it yourself
+    document.cookie = "expires= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    Router.reload();
   }
 }
