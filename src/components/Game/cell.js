@@ -16,31 +16,8 @@ import I7 from "./svgs/7-icon.svg";
 import I8 from "./svgs/8-icon.svg";
 
 export default function Cell({ cell, iY, iX }) {
-  const queryClient = useQueryClient();
-  const newGame = useMutation(gamePost, {
-    onSuccess: (data) => {
-      if (data.uncoveredField) {
-        queryClient.setQueryData(["game"], data);
-        // if game is lost prevent data from refetching
-        if (data.msg === "Game over") {
-          queryClient.setDefaultOptions({
-            queries: {
-              staleTime: Infinity,
-            },
-          });
-        }
-      }
-    },
-  });
-
-  function handleTurn(e) {
-    e.preventDefault();
-    newGame.mutate({ x: iX, y: iY });
-  }
-
   return (
-    <button
-      onClick={handleTurn}
+    <div
       className={
         //  style the board in chess board pattern
         iY % 2 === 0 ? styles.cell_even : styles.cell_odd
@@ -67,6 +44,6 @@ export default function Cell({ cell, iY, iX }) {
       ) : (
         cell === 8 && <I8 className={styles.I8} />
       )}
-    </button>
+    </div>
   );
 }

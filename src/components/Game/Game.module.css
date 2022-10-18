@@ -6,17 +6,25 @@
   transform: translate(-50%, -50%);
 }
 
-.options {
+.options,
+.game_over {
   backdrop-filter: sepia(90%);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7;
   width: 25rem;
   height: 25rem;
   background-color: rgba(0, 0, 0, 0.85);
   border-radius: 20px;
   border: 1em gray ridge;
   pointer-events: auto;
+}
+.game_over {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .button_ranked {
   height: 10rem;
@@ -124,4 +132,28 @@
 .I7,
 .I8 {
   fill: rgb(210, 0, 0);
+}
+
+.x_icon {
+  fill: rgba(255, 255, 255, 1);
+  width: 100%;
+  height: 100%;
+}
+.close_button {
+  right: 0;
+  top: 0;
+  position: absolute;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  justify-content: center;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.game_over_text {
+  padding-top: 2%;
+  font-family: "Silkscreen", cursive;
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
 }
