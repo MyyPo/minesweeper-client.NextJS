@@ -21,6 +21,7 @@ function Game() {
 
   useEffect(() => {
     if (gameCells) {
+      // set grid
       document.documentElement.style.setProperty("--game-cells", gameCells);
       // prevent the gameboard from flashing too much without the grid properties
       setBoardReady(true);

@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 
 import useAuthContext from "../../hooks/useAuthContext";
 import XIcon from "./svgs/x_icon.svg";
-import Router from "next/router";
 
 function Login({ closeWindowHandler }) {
   const nameRef = useRef();
   const passwordRef = useRef();
   const [error, setError] = useState(false);
+  const { setStatus } = useAuthContext();
 
   function handleChange(e) {
     e.preventDefault();
@@ -27,7 +27,8 @@ function Login({ closeWindowHandler }) {
       }),
     });
     if (response.ok) {
-      Router.reload();
+      // set user auth context
+      setStatus("authenticated");
     } else {
       setError(true);
     }

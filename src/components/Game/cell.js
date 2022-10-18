@@ -1,5 +1,6 @@
 import styles from "./Game.module.css";
 import { gamePost } from "../../utils/gamePost";
+import { useGameGet } from "../../hooks/useGameGet";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import QuestionIcon from "./svgs/question-icon.svg";
@@ -20,6 +21,14 @@ export default function Cell({ cell, iY, iX }) {
     onSuccess: (data) => {
       if (data.uncoveredField) {
         queryClient.setQueryData(["game"], data);
+        // if game is lost prevent data from refetching
+        if (data.msg === "Game over") {
+          queryClient.setDefaultOptions({
+            queries: {
+              staleTime: Infinity,
+            },
+          });
+        }
       }
     },
   });

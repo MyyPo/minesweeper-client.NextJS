@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import handleLogout from "../../utils/handleLogout";
+import Router from "next/router";
 
 const fetchGame = async () => {
   const response = await fetch(process.env.NEXT_PUBLIC_API_GAME_PLAY, {
@@ -12,7 +12,8 @@ const fetchGame = async () => {
   }
   // in case of some terrible unhandled error try to log out the user
   if (!response.ok) {
-    return handleLogout();
+    document.cookie = "expires= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    Router.reload();
   }
   response = await response.json();
 
