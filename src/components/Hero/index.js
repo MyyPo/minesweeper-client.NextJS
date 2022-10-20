@@ -3,7 +3,6 @@ import { useState, useEffect, useReducer } from "react";
 
 import Game from "../Game";
 import Auth from "../Auth";
-import useWindowSize from "../../hooks/useWindowSize";
 import useAuthContext from "../../hooks/useAuthContext";
 
 function Hero() {

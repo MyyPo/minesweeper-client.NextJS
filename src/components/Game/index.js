@@ -1,7 +1,6 @@
 import styles from "./Game.module.css";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import anime from "animejs";
 
 import { useGameGet } from "../../hooks/useGameGet";
 import { gamePost } from "../../utils/gamePost";
@@ -13,6 +12,7 @@ function Game() {
   const [gameCells, setGameCells] = useState(null);
   const [boardReady, setBoardReady] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const restartTimeRef = useRef(null);
 
   const { data, isLoading, isFetching } = useGameGet();
   const queryClient = useQueryClient();
@@ -26,12 +26,12 @@ function Game() {
           setTimeout(() => {
             setGameOver(true);
           }, 1000);
-
-          setTimeout(() => {
+          // ref for cleaning it up within gameover component
+          restartTimeRef.current = setTimeout(() => {
             setBoardReady(false);
             setGameOver(false);
             queryClient.refetchQueries(["game"]);
-          }, 4 * 1000);
+          }, 15 * 1000);
         }
       }
     },
@@ -60,13 +60,26 @@ function Game() {
 
   return (
     <div className={styles.container}>
-      {gameOver && <GameOver setGameOver={setGameOver} />}
+      {gameOver && (
+        <GameOver
+          setGameOver={setGameOver}
+          setBoardReady={setBoardReady}
+          restartTimeRef={restartTimeRef}
+        />
+      )}
       {!isLoading && boardReady ? (
         <div className={styles.cells}>
           {/* unpack a two-layer deep array in order to get all of its contents, where [y][x] */}
           {data?.uncoveredField?.map((row, iY) =>
             row.map((cell, iX) => (
-              <div key={iY + iX} onClick={(e) => handleTurn(iX, iY, e)}>
+              <div
+                className={
+                  //  style the board in chess board pattern
+                  iY % 2 === 0 ? styles.cell_odd : styles.cell_even
+                }
+                key={iY + iX}
+                onClick={(e) => handleTurn(iX, iY, e)}
+              >
                 <Cell cell={cell} iY={iY} iX={iX} />
               </div>
             ))

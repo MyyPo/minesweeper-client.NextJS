@@ -10,9 +10,12 @@
 .game_over {
   backdrop-filter: sepia(90%);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 7;
+  width: 200px;
+  height: 200px;
   width: 25rem;
   height: 25rem;
   background-color: rgba(0, 0, 0, 0.85);
@@ -26,9 +29,10 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.button_ranked {
+.button_ranked,
+.restart_button {
   height: 10rem;
-  width: calc(25rem - 10px);
+  width: calc(18rem - 10px);
   border-radius: 10px;
   background: linear-gradient(
     to right,
@@ -47,6 +51,12 @@
   pointer-events: auto;
   text-justify: unset;
 }
+.restart_button {
+  font-family: "Silkscreen", cursive;
+  background: rgb(128, 128, 128);
+  border: 3px solid;
+  border: 5px gray ridge;
+}
 
 .cells {
   max-height: calc(90vh -1px);
@@ -58,7 +68,6 @@
   grid-template-columns: repeat(var(--game-cells), 0fr);
   grid-template-rows: repeat(var(--game-cells), 0fr);
 }
-
 .cell_even,
 .cell_odd {
   min-width: 42px;
@@ -73,6 +82,7 @@
   border-style: ridge;
   font-size: 28px;
 }
+
 .cell_even:nth-child(even) {
   background: rgb(180, 180, 180);
 }
@@ -154,6 +164,6 @@
 .game_over_text {
   padding-top: 2%;
   font-family: "Silkscreen", cursive;
-  font-size: 25px;
+  font-size: 2.5rem;
   color: rgba(255, 255, 255, 1);
 }

@@ -1,6 +1,5 @@
 import styles from "../styles/Home.module.css";
-import { useState, useEffect } from "react";
-import anime from "animejs";
+import { useState, useEffect, useRef } from "react";
 
 import useWindowSize from "../hooks/useWindowSize";
 

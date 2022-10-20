@@ -1,11 +1,7 @@
 import styles from "./Game.module.css";
-import { gamePost } from "../../utils/gamePost";
-import { useGameGet } from "../../hooks/useGameGet";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import QuestionIcon from "./svgs/question-icon.svg";
 import MineIcon from "./svgs/mine-icon.svg";
-import I0 from "./svgs/0-icon.svg";
 import I1 from "./svgs/1-icon.svg";
 import I2 from "./svgs/2-icon.svg";
 import I3 from "./svgs/3-icon.svg";
@@ -17,12 +13,7 @@ import I8 from "./svgs/8-icon.svg";
 
 export default function Cell({ cell, iY, iX }) {
   return (
-    <div
-      className={
-        //  style the board in chess board pattern
-        iY % 2 === 0 ? styles.cell_even : styles.cell_odd
-      }
-    >
+    <>
       {cell === false ? (
         <QuestionIcon />
       ) : cell === "m" ? (
@@ -44,6 +35,6 @@ export default function Cell({ cell, iY, iX }) {
       ) : (
         cell === 8 && <I8 className={styles.I8} />
       )}
-    </div>
+    </>
   );
 }
