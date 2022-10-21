@@ -8,19 +8,26 @@ import Hero from "../components/Hero/index";
 export default function Home() {
   // hook that gets window width and height and listens to its change
   const size = useWindowSize();
+  const columnsRef = useRef(null);
+  const rowsRef = useRef(null);
 
   const [tiles, setTiles] = useState([]);
 
   // figure out the number of decorative tiles to create and columns/rows in css grid to accomodate them
   useEffect(() => {
-    let columns;
-    let rows;
-    columns = Math.floor(size.width > 800 ? size.width / 100 : size.width / 50);
-    rows = Math.floor(size.height > 800 ? size.height / 100 : size.height / 50);
-    if (!isNaN(columns) && !isNaN(rows)) {
-      document.documentElement.style.setProperty("--columns", columns);
-      document.documentElement.style.setProperty("--rows", rows);
-      setTiles(Array.from(Array(columns * rows).keys()));
+    columnsRef.current = Math.floor(
+      size.width > 800 ? size.width / 100 : size.width / 50
+    );
+    rowsRef.current = Math.floor(
+      size.height > 800 ? size.height / 100 : size.height / 50
+    );
+    if (!isNaN(columnsRef.current) && !isNaN(rowsRef.current)) {
+      document.documentElement.style.setProperty(
+        "--columns",
+        columnsRef.current
+      );
+      document.documentElement.style.setProperty("--rows", rowsRef);
+      setTiles(Array.from(Array(columnsRef.current * rowsRef.current).keys()));
     }
   }, [size]);
 

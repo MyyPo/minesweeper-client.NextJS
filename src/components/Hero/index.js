@@ -1,6 +1,3 @@
-import styles from "./Hero.module.css";
-import { useState, useEffect, useReducer } from "react";
-
 import Game from "../Game";
 import Auth from "../Auth";
 import useAuthContext from "../../hooks/useAuthContext";

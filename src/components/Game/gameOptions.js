@@ -19,7 +19,7 @@ function GameOptions() {
   return (
     <div className={styles.options}>
       <button onClick={handleCreateRanked} className={styles.button_ranked}>
-        Create a regular game
+        Create a regular Game
       </button>
     </div>
   );

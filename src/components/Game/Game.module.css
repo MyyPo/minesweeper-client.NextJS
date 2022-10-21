@@ -58,7 +58,8 @@
   border: 5px gray ridge;
 }
 
-.cells {
+.cells,
+.cells_game_over {
   max-height: calc(90vh -1px);
   max-width: calc(90vw -1px);
   position: relative;
@@ -67,6 +68,12 @@
   display: grid;
   grid-template-columns: repeat(var(--game-cells), 0fr);
   grid-template-rows: repeat(var(--game-cells), 0fr);
+}
+.cells_game_over {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 .cell_even,
 .cell_odd {
@@ -83,21 +90,17 @@
   font-size: 28px;
 }
 
-.cell_even:nth-child(even) {
-  background: rgb(180, 180, 180);
-}
-.cell_even:hover {
-  background: rgb(80, 80, 80);
-}
+.cell_even:nth-child(even),
 .cell_odd:nth-child(odd) {
   background: rgb(180, 180, 180);
 }
+.cell_even:nth-child(even):hover,
+.cell_odd:nth-child(odd):hover {
+  background: rgb(220, 220, 220);
+}
+.cell_even:hover,
 .cell_odd:hover {
   background: rgb(80, 80, 80);
-}
-
-.cell:hover {
-  background: rgb(30, 30, 30);
 }
 
 .mine_icon {

@@ -17,13 +17,8 @@
   grid-template-rows: repeat(var(--rows), 1fr);
 }
 
-.tile,
-.tile_toggled {
+.tile {
   position: relative;
-}
-.tile_toggled,
-.tile_toggled:before {
-  color: rgba(0, 0, 0, 0.1);
 }
 
 .tile:hover:before {

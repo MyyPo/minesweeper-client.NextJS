@@ -68,7 +68,7 @@ function Game() {
         />
       )}
       {!isLoading && boardReady ? (
-        <div className={styles.cells}>
+        <div className={!gameOver ? styles.cells : styles.cells_game_over}>
           {/* unpack a two-layer deep array in order to get all of its contents, where [y][x] */}
           {data?.uncoveredField?.map((row, iY) =>
             row.map((cell, iX) => (
