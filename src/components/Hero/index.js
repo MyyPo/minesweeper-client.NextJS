@@ -9,8 +9,8 @@ function Hero() {
   return (
     <>
       {/* Handles authentication login/registration */}
-      {status === "unauthenticated" && <Auth />}
-      {status === "authenticated" && <Game />}
+      {status === "unauthenticated" ? <Auth /> : null}
+      {status === "authenticated" ? <Game /> : null}
     </>
   );
 }

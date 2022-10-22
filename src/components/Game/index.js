@@ -60,13 +60,13 @@ function Game() {
 
   return (
     <div className={styles.container}>
-      {gameOver && (
+      {gameOver ? (
         <GameOver
           setGameOver={setGameOver}
           setBoardReady={setBoardReady}
           restartTimeRef={restartTimeRef}
         />
-      )}
+      ) : null}
       {!isLoading && boardReady ? (
         <div className={!gameOver ? styles.cells : styles.cells_game_over}>
           {/* unpack a two-layer deep array in order to get all of its contents, where [y][x] */}
@@ -85,10 +85,10 @@ function Game() {
             ))
           )}
         </div>
-      ) : (
-        // if the user doesn't have a game show them game creation window
-        data === "nogame" && <GameOptions />
-      )}
+      ) : // if the user doesn't have a game show them game creation window
+      data === "nogame" ? (
+        <GameOptions />
+      ) : null}
     </div>
   );
 }
